@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <title>Cart - Raf</title>
+   <meta name="keywords" content="Shopping Cart, Books, Checkout">
+   <meta name="description" content="View the items in your cart and proceed to checkout.">
+   <meta name="author" content="">
+
+   
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/responsive.css">
+   <link rel="icon" href="images/fevicon.png" type="image/gif">
+</head>
+
+<body class="main-layout Cart-bg">
+
+   <header>
+    
+   </header>
+
+
+   <div class="cart-page-bg" style="margin-top: 150px;">
+      <div class="container">
+         <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+               <div class="cart-title text-center">
+                  <h2>Your Shopping Cart</h2>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+
+   <div class="cart-section">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <!-- Cart Table -->
+               <div class="cart-table table-responsive">
+                  <table class="table table-bordered">
+                     <thead>
+                        <tr>
+                           <th>Book</th>
+                           <th>Price</th>
+                           <th>Quantity</th>
+                           <th>Subtotal</th>
+                           <th>Actions</th>
+                        </tr>
+                     </thead>
+                     <tbody id="cart-items">
+                   
+                        <tr>
+                           <td>
+                              <div class="cart-item">
+                                 <img  alt="Book Name" style="width: 50px; height: 70px;">
+                                 <span></span>
+                              </div>
+                           </td>
+                           <td></td>
+                           <td>
+                              <input type="number" value="{{ quantity }}" min="1" class="form-control cart-quantity"
+                                 data-id="{{ book_id }}" onchange="updateQuantity(this)">
+                           </td>
+                           <td></td>
+                           <td>
+                              <button class="btn btn-danger btn-sm" onclick="removeItem('{{ book_id }}')">Remove</button>
+                           </td>
+                        </tr>
+                     </tbody>
+                     <tfoot>
+                        <tr>
+                           <td colspan="3" class="text-right"><strong>Total:</strong></td>
+                           <td colspan="2" id="cart-total"><strong></strong></td>
+                        </tr>
+                     </tfoot>
+                  </table>
+               </div>
+
+               
+               <div class="cart-actions text-right" style="margin-right: 350px;">
+                  <a href="library.html" class="btn btn-outline-dark" style="background-color: rgb(205, 0, 0);border-color: rgb(255, 255, 255) ;"><p style="color: rgb(255, 255, 255);">Continue Shopping</p></a>
+                  <a href="checkout.html" class="btn btn-primary" style="background-color: rgb(114, 38, 185);border-color: rgb(255, 255, 255) ;">Proceed to Checkout</a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <footer style="margin-top: 50px;">
+      
+   </footer>
+
+   <script src="js/jquery.min.js"></script>
+   <script src="js/popper.min.js"></script>
+   <script src="js/bootstrap.bundle.min.js"></script>
+   <script src="js/custom.js"></script>
+   <script src="js/html/footer.js"></script>
+   <script src="js/html/header.js"></script>
+
+
+   <script>
+      
+      function updateQuantity(element) {
+         const bookId = element.getAttribute('data-id');
+         const newQuantity = element.value;
+
+        
+         console.log(`Update Quantity: Book ID = ${bookId}, New Quantity = ${newQuantity}`);
+      }
+
+      function removeItem(bookId) {
+        
+         console.log(`Remove Item: Book ID = ${bookId}`);
+      }
+
+      
+      window.onload = function () {
+  
+         console.log("Fetching cart data...");
+      };
+   </script>
+</body>
+
+</html>
